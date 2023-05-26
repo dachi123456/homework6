@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: wheat;
+            width: 12rem;
+            height: 12rem;
+            border-radius: 1rem;
+        }
+        .black-blur{
+            height: 100vh;
+            filter: blur(6px);
+            background-color: #642222;
+        }
+        .second{
+            margin-top: 5rem;
+        }
+        .third{
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1 დავალება -->
+    <div class="background"></div>
+    <div class="first">
+        <button>click</button>
+</div>
+
+
+    <!-- 2 დავალება -->
+<div class="second">
+    <input type="text" name="" id="">
+    <button>change color</button>
+</div>
+
+
+    <!-- 3 დავალება -->
+    <div class="third">
+        <input type="text" name="" id="">
+        <button>click</button>
+        <div></div>
+    </div>
+
+
+
+    <script>
+        //1 დავალება
+        const modalBtn = document.querySelector('.first button')
+        const background = document.querySelector('.background')
+        const modalDiv = document.querySelector('.first')
+        
+        modalBtn.addEventListener('click', () => {
+            
+            background.classList.add('black-blur')
+            modalDiv.classList.add('modal')
+        })
+    
+
+        //2 დავალება
+        const secondDiv = document.querySelector('.second')
+        const colorInp = document.querySelector('.second input')
+        const colorBtn = document.querySelector('.second button')
+        const body = document.querySelector('body')
+        colorBtn.addEventListener('click', () => {
+            
+            if(colorInp.value === 'red' || colorInp.value === 'blue' || colorInp.value === 'green' || colorInp.value === 'black' || colorInp.value === 'white'){
+                body.style.backgroundColor = colorInp.value
+            }else{
+                
+                alert('input red,blue,green,black or white')
+            }
+        })
+
+        //3 დავალება
+        const avarageInp = document.querySelector('.third input')
+        const avarageResult = document.querySelector('.third div')
+        const avarageBtn = document.querySelector('.third button')
+
+            avarageBtn.addEventListener('click',calculateAverage)
+        
+        function calculateAverage() {
+            const input = avarageInp.value;
+            const numbers = input.split(":");
+            const numberArray = numbers.map(Number);
+    
+            const sum = numberArray.reduce((a, b) => a + b, 0);
+            const average = sum / numberArray.length;
+    
+            avarageResult.textContent = average;
+            if(!input.includes(':')){
+                alert('use :')
+                avarageResult.textContent = ''
+            }
+    
+    }
+    </script>
+</body>
+</html>
